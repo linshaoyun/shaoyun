@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="poi/lib/poi-3.11-20141221.jar"/>
+	<classpathentry kind="lib" path="poi/lib/poi-examples-3.11-20141221.jar"/>
+	<classpathentry kind="lib" path="poi/lib/poi-excelant-3.11-20141221.jar"/>
+	<classpathentry kind="lib" path="poi/lib/poi-ooxml-3.11-20141221.jar"/>
+	<classpathentry kind="lib" path="poi/lib/poi-ooxml-schemas-3.11-20141221.jar"/>
+	<classpathentry kind="lib" path="poi/lib/poi-scratchpad-3.11-20141221.jar"/>
+	<classpathentry kind="lib" path="poi/lib/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="D:/MyEclipse9.0/Common/binary/com.sun.java.jdk.win32.x86_64_1.6.0.013/jre/lib/ext/sqljdbc4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MySQL"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/sqljdbc4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>
