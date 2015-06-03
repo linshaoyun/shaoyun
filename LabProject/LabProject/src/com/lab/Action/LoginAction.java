@@ -3,7 +3,14 @@
  */
 package com.lab.Action;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.lab.Entity.Users;
 import com.lab.Service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -11,10 +18,12 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author Administrator
  * 
  */
-public class LoginAction extends ActionSupport {
+public class LoginAction extends ActionSupport implements SessionAware{
 	
 	@Resource
 	private UserService userService;
+	
+	Map<String, Object> session;
 	
 	private String username;
 	// 定义登录名称属性
@@ -49,10 +58,21 @@ public class LoginAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		if (userService.searchUserByNameAndPW(username, password))
-			return "success"; // 登录成功返回SUCCESS
+		List<Users> userList = userService.searchUserByNameAndPW(username, password);
+		if(userList.size()!= 0){
+							
+			System.out.println(userList.get(0).getUserId()+"   "+userList.get(0).getUserName());
+			session.put("UserID", userList.get(0).getUserId());	
+			
+			return "success"; 
+		}	
 		else
-			return "login"; // 登录失败返回LOGIN
+			return "login"; 
+	}
+
+	public void setSession(Map<String, Object> session) {
+		// TODO Auto-generated method stub
+		this.session = session;
 	}
 
 

@@ -26,6 +26,6 @@
 	
 	<bean id="userLogin" class="com.lab.Action.LoginAction" />
 	<bean id="userRegister" class="com.lab.Action.RegisterAction" />	
-	
+	<bean id="userInfo" class="com.lab.Action.UserInfoAction" />	
 	
 </beans>

@@ -3,6 +3,8 @@
  */
 package com.lab.DAO;
 
+import java.util.List;
+
 import com.lab.Entity.Users;
 
 /**
@@ -10,12 +12,18 @@ import com.lab.Entity.Users;
  * 
  */
 public interface UserDao {
-	// insert User record.
+	// insert User record.	
+	
 	public Users insertUser(Users user);
 
-	public Users updateUser(Users user);
+	public Users updateUser(String ID, Users user);
 
-	public void deleteUser(Users user);
+	public void deleteUser(String ID);
 
-	public boolean searchUserByNameAndPW(String name,String pw);
+	public List<Users> searchUserByNameAndPW(String name,String pw);
+	
+	public List<Users> SelectUserInfo(String ID);
+	
+	public boolean UpdateUserPwd(String ID,String userPwd);
+	
 }

@@ -30,26 +30,22 @@ public class UserDaoImpl implements UserDao {
 		return user;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.zhbit.bbs.dao.UserDao#updateUser(com.zhbit.bbs.domain.User)
-	 */
-	public Users updateUser(Users user) {
-		System.out.println(user);
-		sessionFactory.getCurrentSession().saveOrUpdate(user);
-		return user;
-
+	public Users updateUser(String ID, Users user) {
+		Query query = sessionFactory.getCurrentSession().createQuery("Update Users as u set u.userName = ?, u.userAge=?,u.userSex=?,u.userPhone=?,u.userEmail=? where userID=?");
+		query.setParameter(0, user.getUserName());		
+		query.setParameter(1, user.getUserAge());
+		query.setParameter(2, user.getUserSex());
+		query.setParameter(3, user.getUserPhone());
+		query.setParameter(4, user.getUserEmail());
+		query.setParameter(5, ID);
+		int n=query.executeUpdate();
+		System.out.println(n);
+		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.zhbit.bbs.dao.UserDao#deleteUser(com.zhbit.bbs.domain.User)
-	 */
-	public void deleteUser(Users user) {
+	public void deleteUser(String ID) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	/*
@@ -59,20 +55,24 @@ public class UserDaoImpl implements UserDao {
 	 */
 	@Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 	@SuppressWarnings("unchecked")
-	public boolean searchUserByNameAndPW(String name,String pw) {
-		boolean tap = false;
+	public List<Users> searchUserByNameAndPW(String name,String pw) {
 
 		Query query = sessionFactory.getCurrentSession().createQuery("from Users as u where u.userName=? and u.userPwd=? ");
 		query.setParameter(0, name);
 		query.setParameter(1, pw);
-		if(query.list().size()!= 0){
-			tap = true;
-			
-			List<Users> userList = query.list();
-			System.out.println(userList.get(0));
-	
-		}	
-		return tap;
+
+		return query.list();
+	}
+
+	public List<Users> SelectUserInfo(String ID) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Users as u where u.userID=?");
+		query.setParameter(0, ID);
+		return query.list();
+	}
+
+	public boolean UpdateUserPwd(String ID, String userPwd) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

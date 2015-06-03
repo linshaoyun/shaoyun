@@ -28,6 +28,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- Custom styles -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+      <script src="js/lte-ie7.js"></script>
+    <![endif]-->
+
   </head>
   
   <body>
@@ -54,9 +62,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </ul>
                 <!--  search form end -->                
             </div>
+
       </header>      
       <!--header end-->
-	  <!--sidebar start-->
+<!--sidebar start-->
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
@@ -135,7 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">                          
-                          <li><a class="" href="PersonalInformationServlet">个人信息</a></li>
+                          <li><a class="" href="UserInfo!Update.action">个人信息</a></li>
                           <li><a class="" href="javascript:window.location.href='form_validation.jsp'"><span>修改密码</span></a></li>
                           <li><a class="" href="PersonalInformationServlet">修改资料</a></li>
                       </ul>
@@ -146,14 +155,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
       </aside>
       <!--sidebar end-->
-     
+      <%
+      if((String)request.getAttribute("display")=="true"){
+   %>
    <script type="text/javascript">
    alert("个人信息修改成功！");
    </script>
-  
+   <%
+   }else if((String)request.getAttribute("display")=="false"){
+    %>
        <script type="text/javascript">
    alert("个人信息修改失败错误");
    </script>
+    <%
+    }
+     %>
 
       <!--main content start-->
       <section id="main-content">
@@ -181,7 +197,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                               <h6></h6>
                             </div>
                             <div class="col-lg-4 col-sm-4 follow-info">
-                                <p></p>
+                                <p>.</p>
 								<p><i class="fa fa-twitter">jenifertweet</i></p>
                                 <h6>
                                     <span><i class="icon_clock_alt"></i>11:05 AM</span>
@@ -335,13 +351,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                   <div id="profile" class="tab-pane">
                                     <section class="panel">
                                       <div class="bio-graph-heading">
-                                               
+                                                
                                       </div>
                                       <div class="panel-body bio-graph-info">
                                           <h1>Bio Graph</h1>
                                           <div class="row">
                                               <div class="bio-row">
-                                                  <p><span>用户名 </span>:  </p>
+                                                  <p><span>用户名 </span>: </p>
                                               </div>
                                               <div class="bio-row">
                                                   <p><span>真实姓名 </span>: </p>
@@ -362,7 +378,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                   <p><span>工作地点</span>: </p>
                                               </div>
                                               <div class="bio-row">
-                                                  <p><span>个人网站 </span>: </p>
+                                                  <p><span>个人网站 </span>:  </p>
                                               </div>
                                           </div>
                                       </div>
@@ -378,66 +394,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <section class="panel">                                          
                                           <div class="panel-body bio-graph-info">
                                               <h1> Profile Info</h1>
-                                              <form class="form-horizontal" role="form" action="AlterInfoServlet" method="post">                                                  
+                                              <form  class="form-horizontal" role="form" action="UserInfo!Update.action" method="post">                                                  
                                                   <div class="form-group">
                                                       <label class="col-lg-2 control-label">用户名</label>
                                                       <div class="col-lg-6">
-                                                          <input type="text" name="userName" class="form-control" id="f-name" placeholder=" " value="">
+                                                          <input type="text" name="user.userName" class="form-control" id="f-name" placeholder=" " value="">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label class="col-lg-2 control-label">真实姓名</label>
+                                                      <label class="col-lg-2 control-label">年龄</label>
                                                       <div class="col-lg-6">
-                                                          <input name="realName" type="text" class="form-control" value="" id="l-name" placeholder=" ">
+                                                          <input type="text" value="" name="user.userAge" class="form-control" id="occupation" placeholder=" ">
                                                       </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="col-lg-2 control-label">个人描述</label>
-                                                      <div class="col-lg-10">
-                                                          <textarea  name="personalDes" id="" class="form-control" cols="30"  rows="5"></textarea>
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="col-lg-2 control-label">工作单位</label>
-                                                      <div class="col-lg-6">
-                                                          <input name="workUnits" type="text" class="form-control" id="c-name" placeholder=" " value="" >
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="col-lg-2 control-label">职位</label>
-                                                      <div class="col-lg-6">
-                                                          <input name="position" value="" type="text" class="form-control" id="b-day" placeholder=" ">
-                                                      </div>
-                                                  </div>
+                                                  </div>  
                                                   <div class="form-group">
                                                       <label class="col-lg-2 control-label">性别</label>
                                                       <div class="col-lg-6">
-                                                          <input type="text" value="" name="userSex" class="form-control" id="occupation" placeholder=" ">
+                                                          <input type="text" value="" name="user.userSex" class="form-control" id="occupation" placeholder=" ">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
                                                       <label class="col-lg-2 control-label">手机号码</label>
                                                       <div class="col-lg-6">
-                                                          <input type="text" value="" name="userPhone" class="form-control" id="email" placeholder=" ">
+                                                          <input type="text" value="" name="user.userPhone" class="form-control" id="email" placeholder=" ">
                                                       </div>
                                                   </div>
                                                   <div class="form-group">
                                                       <label class="col-lg-2 control-label">邮箱</label>
                                                       <div class="col-lg-6">
-                                                          <input type="text" value="" name="userEmail" class="form-control" id="mobile" placeholder=" ">
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="col-lg-2 control-label">个人网站</label>
-                                                      <div class="col-lg-6">
-                                                          <input type="text" value="" name="personalWeb" class="form-control" id="url" placeholder="http://www.demowebsite.com ">
+                                                          <input type="text" value="" name="user.userEmail" class="form-control" id="mobile" placeholder=" ">
                                                       </div>
                                                   </div>
 
                                                   <div class="form-group">
                                                       <div class="col-lg-offset-2 col-lg-10">
-                                                          <button type="submit" class="btn btn-primary">Save</button>
-                                                          <button type="button" class="btn btn-danger">Cancel</button>
+                                                          <button type="submit"  class="btn btn-primary">保存</button>
+                                                          <button type="button" class="btn btn-danger">撤销</button>
                                                       </div>
                                                   </div>
                                               </form>

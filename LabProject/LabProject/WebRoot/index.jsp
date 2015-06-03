@@ -150,7 +150,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">                          
-                          <li><a class="" href="PersonalInformationServlet">个人信息</a></li>
+                          <li><a class="" href="javascript:window.location.href='profile.jsp'"">个人信息</a></li>
                           <li><a class="" href="javascript:window.location.href='form_validation.jsp'"><span>修改密码</span></a></li>
                           <li><a class="" href="PersonalInformationServlet">修改资料</a></li>
                       </ul>
